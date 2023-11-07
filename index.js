@@ -42,6 +42,8 @@ operators.forEach((operator) => {
         else if (operatorValue === "backspace")
             printOutput(getFormattedOutput(backspace(value)));
         else if (operatorValue === "equals") {
+            const isOperator = checkOperator(value.slice(-1));
+            if (isOperator) return;
             printHistory(value);
             printOutput(getFormattedOutput(eval(value)));
         }
@@ -53,15 +55,22 @@ stringValues.forEach(value => {
     value.addEventListener("click", () => {
         let currentValue = getOutput();
         const buttonValue = value.getAttribute("calc-value");
-        if (currentValue === "0" && !(buttonValue === "+" || buttonValue === "-" || buttonValue === "*" || buttonValue === "/" || buttonValue === "%")) {
+        const isOperator = checkOperator(buttonValue);
+        if (currentValue === "0" && !isOperator) {
             currentValue = "";
+        }
+        const lastValue = currentValue.slice(-1);
+        if (isOperator && (lastValue === "+" || lastValue === "-" || lastValue === "*" || lastValue === "/" || lastValue === "%")) {
+            currentValue = currentValue.slice(0, -1);
         }
         const newValue = `${currentValue}${buttonValue}`.trim();
         printOutput(newValue);
     });
 });
 
+const checkOperator = value => (value === "+" || value === "-" || value === "*" || value === "/" || value === "%");
+
 const toggleButton = document.querySelector(".toggle-mode");
 toggleButton.addEventListener("click", () => {
     document.querySelector("html").toggleAttribute("dark-mode");
-})
+});
