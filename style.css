@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik');
+
+:root {
+    --background: #edeef2;
+    --color-text: #9c9c9c;
+    --color-orange: #ff6a00;
+    --light-shadow-color: #fff;
+    --dark-shadow-color: #5e687949;
+    --shadow-outset: -4px -2px 6px var(--light-shadow-color), 4px 2px 6px var(--dark-shadow-color);
+    --shadow-inset: inset -2px -2px 6px var(--light-shadow-color), inset 2px 2px 6px var(--dark-shadow-color);
+}
+
+html[dark-mode] {
+    --background: #31363c;
+    --color-text: #6a707b;
+    --color-orange: #ff6a00;
+    --light-shadow-color: #43434380;
+    --dark-shadow-color: #0000004d;
+    --shadow-outset: -4px -2px 6px var(--light-shadow-color), 4px 2px 6px var(--dark-shadow-color);
+    --shadow-inset: inset -2px -2px 6px var(--light-shadow-color), inset 2px 2px 6px var(--dark-shadow-color);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+button {
+    outline: none;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: var(--background);
+    font-weight: 900;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: var(--color-text);
+    transition: box-shadow 0.15s ease-in-out;
+}
+
+body {
+    background-color: var(--background);
+    overflow: hidden;
+}
+
+.neumorph-outside {
+    box-shadow: var(--shadow-outset);
+}
+
+.neumorph-inside::before {
+    box-shadow: var(--shadow-inset);
+}
+
+.wrapper {
+    width: 300px;
+    height: 450px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    padding: 2rem 1rem;
+}
+
+.result {
+    height: 30%;
+    position: relative;
+    border-top: 3px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.05);
+}
+
+.result .value {
+    position: absolute;
+    text-align: right;
+    right: 5%;
+    font-size: 2rem;
+    color: var(--color-text);
+}
+
+.history .value {
+    bottom: 30%;
+}
+
+.output .value {
+    position: absolute;
+    bottom: 2%;
+}
+
+.keyboard {
+    padding: 1.75rem .5rem;
+}
+
+.section {
+    height: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* padding: 0.05rem; */
+}
+
+.section div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button.number {
+    font-weight: 500;
+}
+
+button.disabled {
+    cursor: auto;
+}
+
+button.disabled:hover {
+    box-shadow: unset;
+}
+
+button:hover,
+button:active {
+    box-shadow: var(--shadow-inset);
+}
+
+button.operator {
+    color: var(--color-orange);
+}
+
+button.hover-outside:hover {
+    box-shadow: var(--shadow-outset);
+}
+
+.toggle-mode {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 1rem;
+    padding: 0.3rem;
+}
+
+.toggle-mode .light,
+html[dark-mode] .toggle-mode .dark {
+    display: block;
+}
+
+.toggle-mode .dark,
+html[dark-mode] .toggle-mode .light {
+    display: none;
+}
+
+.toggle-mode svg * {
+    fill: var(--color-text);
+}
+
+html[dark-mode] .toggle-mode svg * {
+    fill: var(--color-orange);
+}
