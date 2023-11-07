@@ -79,10 +79,14 @@ body {
     right: 5%;
     font-size: 2rem;
     color: var(--color-text);
+    font-weight: bold;
 }
 
 .history .value {
-    bottom: 30%;
+    bottom: 40%;
+    opacity: .5;
+    font-size: 1.5rem;
+    font-weight: 400;
 }
 
 .output .value {
