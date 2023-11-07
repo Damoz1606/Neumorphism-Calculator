@@ -44,7 +44,7 @@ button {
 body {
     background-color: var(--background);
     overflow: hidden;
-    transition: background-color .3s ease-in;
+    transition: background-color .3s ease-in, box-shadow .3s ease-in;
 }
 
 .neumorph-outside {
