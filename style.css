@@ -28,6 +28,9 @@ html[dark-mode] {
 }
 
 button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     outline: none;
     border: none;
     width: 45px;
@@ -130,8 +133,10 @@ button:active {
     box-shadow: var(--shadow-inset);
 }
 
-button.operator {
+button.operator,
+button.operator svg * {
     color: var(--color-orange);
+    fill: var(--color-orange);
 }
 
 button.hover-outside:hover {
